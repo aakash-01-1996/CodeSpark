@@ -1,38 +1,143 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.homePageWrapper {
+  height: 95vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.formWrapper {
+  background: transparent;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  border-style: inset;
+  border-color: #654dc4;
+  animation-fill-mode: forwards;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainLabel {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.homePageLogo {
+  height: auto;
+  margin-bottom: 0;
+  display: flex;
+  margin-left: 71px;
+}
+
+.inputBox {
+  padding: 10px;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  margin-bottom: 15px;
+  background: #e2dfdf;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.joinBtn, .leaveBtn {
+  background: #4323d0;
+  color: #fff;
+  width: 100px;
+  margin-left: auto;
+}
+
+.joinBtn:hover, .leaveBtn:hover {
+  background: #7566b2;
+}
+
+.createInfo {
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.createNewBtn {
+  color: #c1a7a7;
+  text-decoration: none;
+  border-bottom: 1px solid #c1a7a7;
+  transition: all 0.3s ease-in-out;
+}
+
+.createNewBtn:hover {
+  color: antiquewhite;
+  border-color: antiquewhite;
+}
+
+.mainWrap {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+}
+
+.aside {
+  background: transparent;
+  padding: 10px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.asideInner {
+  flex: 1;
+}
+
+.clientsList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.client {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-weight: normal;
+}
+
+.userName {
+  margin-top: 5px;
+}
+
+.logo {
+  border-bottom: 1px solid #424242;
+  padding-bottom: 0;
+  margin-left: 15px;
+}
+
+.leaveBtn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.CodeMirror {
+  min-height: calc(100vh - 20px);
+  font-size: 20px;
+  line-height: 1.6;
+  padding-top: 20px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  text-decoration: underline;
 }
