@@ -1,5 +1,5 @@
 ## CodeSpark - Code Together in Real-Time
-- Just like google docs, try pairing with your friends and get coding
+- Just like google docs, try pairing with your friends and start coding
 
 ### Sneak Peak
 
