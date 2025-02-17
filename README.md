@@ -2,11 +2,11 @@
 - Just like google docs, try pairing with your friends and start coding
 
 ### Sneak Peak
-
-<img width="750" alt="Screenshot 2024-07-17 at 8 01 02 PM" src="https://github.com/user-attachments/assets/13b10271-359e-4f47-83bd-9ea351c8962f">
-<img width="750" alt="Screenshot 2024-07-17 at 10 51 18 PM" src="https://github.com/user-attachments/assets/bff06d71-714d-40c9-b0ef-6655e5c8e79a">
-<img width="750" alt="Screenshot 2024-07-17 at 8 50 02 PM" src="https://github.com/user-attachments/assets/aad59fe2-e6f2-44b6-9484-4f824c5ee4ef">
-
+<p>
+  <img width="750" alt="Screenshot 2024-07-17 at 8 01 02 PM" src="https://github.com/user-attachments/assets/13b10271-359e-4f47-83bd-9ea351c8962f">
+  <img width="750" alt="Screenshot 2024-07-17 at 10 51 18 PM" src="https://github.com/user-attachments/assets/bff06d71-714d-40c9-b0ef-6655e5c8e79a">
+  <img width="750" alt="Screenshot 2024-07-17 at 8 50 02 PM" src="https://github.com/user-attachments/assets/aad59fe2-e6f2-44b6-9484-4f824c5ee4ef">
+</p>
 
 ### Tech Stack used
 
