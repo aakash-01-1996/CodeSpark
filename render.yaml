@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: codespark
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run server:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: REACT_APP_BACKEND_URL
+        sync: false

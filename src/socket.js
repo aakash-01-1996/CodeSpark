@@ -7,5 +7,7 @@ export const initSocket = async () => {
     timeout: 10000,
     transports: ["websocket"],
   };
-  return io(process.env.REACT_APP_BACKEND_URL, options);
+  // In production, connect to same origin. In dev, use env variable.
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || window.location.origin;
+  return io(backendUrl, options);
 };
