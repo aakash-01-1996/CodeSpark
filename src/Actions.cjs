@@ -15,4 +15,4 @@ const ACTIONS = {
   STOP_TYPING: "stop-typing",
 };
 
-export default ACTIONS;
+module.exports = ACTIONS;

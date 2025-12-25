@@ -64,7 +64,7 @@ const app = express();
 const http = require("http");
 const path = require("path");
 const { Server } = require("socket.io");
-const ACTIONS = require("./src/Actions");
+const ACTIONS = require("./src/Actions.cjs");
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -127,12 +127,62 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on(ACTIONS.CODE_CHANGE, ({ roomId, code }) => {
-    socket.in(roomId).emit(ACTIONS.CODE_CHANGE, { code });
+  socket.on(ACTIONS.CODE_CHANGE, ({ roomId, code, username, changedLines }) => {
+    socket
+      .in(roomId)
+      .emit(ACTIONS.CODE_CHANGE, { code, username, changedLines });
   });
 
-  socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
-    io.to(socketId).emit(ACTIONS.SYNC_CODE, { code });
+  socket.on(ACTIONS.SYNC_CODE, ({ socketId, code, lineAuthors }) => {
+    io.to(socketId).emit(ACTIONS.SYNC_CODE, { code, lineAuthors });
+  });
+
+  // Typing indicator
+  socket.on(ACTIONS.TYPING, ({ roomId, username }) => {
+    socket.in(roomId).emit(ACTIONS.TYPING, { username });
+  });
+
+  socket.on(ACTIONS.STOP_TYPING, ({ roomId, username }) => {
+    socket.in(roomId).emit(ACTIONS.STOP_TYPING, { username });
+  });
+
+  // Deletion approval flow
+  socket.on(
+    ACTIONS.DELETE_REQUEST,
+    ({ roomId, username, deletedCode, newCode, requestId }) => {
+      // Send deletion request to all other users in the room
+      socket.in(roomId).emit(ACTIONS.DELETE_REQUEST, {
+        username,
+        deletedCode,
+        newCode,
+        requestId,
+        requesterId: socket.id,
+      });
+    }
+  );
+
+  socket.on(
+    ACTIONS.DELETE_APPROVED,
+    ({ roomId, requestId, newCode, requesterId }) => {
+      // Notify all users that deletion was approved
+      io.in(roomId).emit(ACTIONS.DELETE_APPROVED, { requestId, newCode });
+    }
+  );
+
+  socket.on(
+    ACTIONS.DELETE_REJECTED,
+    ({ roomId, requestId, username, requesterId }) => {
+      // Notify the requester that deletion was rejected
+      io.to(requesterId).emit(ACTIONS.DELETE_REJECTED, {
+        requestId,
+        rejectedBy: username,
+      });
+    }
+  );
+
+  socket.on(ACTIONS.DELETE_CANCELLED, ({ roomId, requestId }) => {
+    // Notify all users that the deletion request was cancelled
+    socket.in(roomId).emit(ACTIONS.DELETE_CANCELLED, { requestId });
   });
 
   socket.on("disconnecting", () => {
