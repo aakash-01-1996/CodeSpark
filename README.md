@@ -5,6 +5,10 @@
 
 https://codespark-wfcd.onrender.com/
 
+_Note: This app is hosted on [Render's](https://render.com/) (free tier), so it goes to sleep after 15 mins of inactivity.
+Waking it back up can take around 30-45 seonds._
+
+
 ### Sneak Peak
 <p>
   <img width="750" alt="Screenshot 2024-07-17 at 8 01 02 PM" src="https://github.com/user-attachments/assets/13b10271-359e-4f47-83bd-9ea351c8962f">
