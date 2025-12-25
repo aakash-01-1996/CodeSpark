@@ -193,6 +193,13 @@ const EditorPage = () => {
           return prev.filter((client) => client.socketId !== socketId);
         });
       });
+
+      // Listening for code sync (when a new user joins, they receive current code)
+      socketRef.current.on(ACTIONS.SYNC_CODE, ({ code }) => {
+        if (code !== null && code !== undefined) {
+          codeRef.current = code;
+        }
+      });
     };
 
     init();
@@ -202,6 +209,7 @@ const EditorPage = () => {
         socketRef.current.disconnect();
         socketRef.current.off(ACTIONS.JOINED);
         socketRef.current.off(ACTIONS.DISCONNECTED);
+        socketRef.current.off(ACTIONS.SYNC_CODE);
       }
     };
   }, [reactNavigator, location.state?.username, roomId]);

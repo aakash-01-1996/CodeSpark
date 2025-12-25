@@ -100,16 +100,22 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
 
   useEffect(() => {
     if (socketRef.current) {
+      const socket = socketRef.current;
+
       const handleCodeChange = ({ code }) => {
-        if (code !== null && editorRef.current.getValue() !== code) {
+        if (
+          code !== null &&
+          editorRef.current &&
+          editorRef.current.getValue() !== code
+        ) {
           editorRef.current.setValue(code);
         }
       };
 
-      socketRef.current.on(ACTIONS.CODE_CHANGE, handleCodeChange);
+      socket.on(ACTIONS.CODE_CHANGE, handleCodeChange);
 
       return () => {
-        socketRef.current.off(ACTIONS.CODE_CHANGE, handleCodeChange);
+        socket.off(ACTIONS.CODE_CHANGE, handleCodeChange);
       };
     }
   }, [socketRef]);
